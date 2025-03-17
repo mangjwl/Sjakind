@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title >欢迎来到周杰伦的音乐世界</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+    <header>
+    <button id="logout-button" style="margin-left: auto;">退出登录</button>
+    <div id="user-greeting" class="user-greeting">
+        欢迎, <span id="username">访客</span>!
+    </div>
+    <h1>周杰伦的音乐世界</h1>
+    <link rel="stylesheet" href="style.css">
+   
+
+    <nav>
+    <ul>
+      <li><span>主页</span></li>
+      <li><a href="介绍.html">介绍</a></li>
+      <li><a href="视频&音频.html">音乐</a></li>
+      <li><a href="论坛.html">论坛</a></li>
+    </ul>
+  </nav>
+  </header>
+
+  <script>
+    // 页面加载时检查用户名
+    document.addEventListener('DOMContentLoaded', function () {
+        const storedUsername = localStorage.getItem('username');
+        if (storedUsername) {
+            document.getElementById('username').textContent = storedUsername;
+        } else {
+            document.getElementById('username').textContent = '访客';
+        }
+    });
+  </script>
+
+  <main>
+    <article>
+      <p>欢迎来到"周杰伦音乐世界"——一个专注于华语音乐巨星周杰伦的综合性网站。在这里，您可以找到关于周杰伦的各种信息，包括音乐介绍、收藏图片、音乐视频，以及我们自建的杰迷论坛。</p>
+      <hr />
+      <p>在"周杰伦音乐世界"，我们致力于为音乐爱好者提供一个全面、多元化的交流平台。我们的网站内容包括音乐介绍，详细介绍了周杰伦的主要专辑、经典曲目和音乐风格。此外，我们还提供了一个丰富的图片库，收录了大量精美的周杰伦演出图片和生活照。</p>
+      <hr />
+      <p>音频收藏部分，我们收集了周杰伦的精彩音乐供您随时欣赏。这些视频不仅可以让您重温周杰伦音乐中的经典旋律，还能让您感受到他独特的音乐魅力与创意。</p>
+      <hr />
+      <p>除了以上内容，我们还为您打造了一个专属的杰迷论坛。在这里，您可以与其他周杰伦的粉丝分享心得、讨论音乐、交流感想。我们鼓励大家积极发表自己的看法，分享对周杰伦音乐的热爱与感悟。</p>
+      <hr />
+      <p>"周杰伦音乐世界"致力于为广大音乐爱好者提供一个优质、便捷的在线交流平台。我们诚挚邀请您加入我们的大家庭，与我们一起分享对周杰伦音乐的热爱，共同度过美好的时光</p>
+      <hr />
+      <p>请随时关注我们的网站更新，以便获取更多精彩内容和活动信息。谢谢您的光临，"周杰伦音乐世界"期待您的加入！</p>
+</article>
+<aside>
+      <a href="picture/侧边栏.png"><img src="picture/侧边栏.png" alt="点击缩略图查看完整照片"></a>
+      <a href="picture/侧边栏2.png"><img src="picture/侧边栏2.png" alt="点击缩略图查看完整照片"></a>
+</aside>
+</main>
+<footer>
+      <p>网站作者：方渝程、余庆、吴前俊</p>
+</footer>
+<script src="common.js"></script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Registration</title>
+    <style>
+        body {
+            background-image: url('picture/beijing.jpg'); /* 替换 'your-image-url.jpg' 为你的图片地址 */
+            background-color: rgba(247, 247, 247, 0.1); /* 40% 透明度的背景色 */
+            background-blend-mode: overlay; /* 叠加混合模式，使背景图片和颜色混合 */
+            background-size: cover; /* 背景图大小覆盖整个容器 */
+            background-position: center; /* 图片居中显示 */
+            background-repeat: no-repeat; /* 不重复平铺 */
+            font-family: Arial, sans-serif; /* 字体 */
+            display: flex; /* Flex布局 */
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+            height: 100vh; /* 高度占满视窗 */
+            margin: 0; /* 边距 */
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8); /* 设置半透明背景 */
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 300px;
+            backdrop-filter: blur(10px); /* 添加毛玻璃效果 */
+            -webkit-backdrop-filter: blur(10px); /* 兼容 Safari 浏览器 */
+        }
+
+        form {
+            margin-bottom: 15px;
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box; 
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        button:hover {
+            background-color: #4cae4c;
+        }
+
+        .register-link {
+            text-align: center;
+            font-size: 14px;
+            margin-top: 10px;
+            cursor: pointer;
+            color: #5cb85c;
+            text-decoration: underline;
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 登录表单 -->
+        <div class="form-container" id="login-form-container">
+            <h2 class="form-title">欢迎来到音乐世界</h2>
+            <form id="login-form" onsubmit="return login()">
+                <input type="text" id="login-username" placeholder="用户名" required>
+                <input type="password" id="login-password" placeholder="密码" required> 
+                <button type="submit">登录</button>
+            </form>
+            <div class="register-link" onclick="toggleForm()">如没有账号请先注册</div>
+        </div>
+      
+        <!-- 注册表单 -->
+        <div class="form-container" id="register-form-container" style="display: none;">
+            <h2 class="form-title">用户注册</h2>
+            <form id="register-form" onsubmit="return register()">
+                <input type="text" id="register-username" placeholder="用户名" required>
+                <input type="password" id="register-password" placeholder="密码" required>
+                <button type="submit">注册</button>
+            </form>
+            <div class="register-link" onclick="toggleForm()">已有账号？返回登录</div>
+        </div>
+    </div>
+
+    <script>
+        // 切换表单显示
+        function toggleForm() {
+            var loginFormContainer = document.getElementById('login-form-container');
+            var registerFormContainer = document.getElementById('register-form-container');
+
+            if (loginFormContainer.style.display === 'none') {
+                loginFormContainer.style.display = 'block';
+                registerFormContainer.style.display = 'none';
+            } else {
+                loginFormContainer.style.display = 'none';
+                registerFormContainer.style.display = 'block';
+            }
+        }
+
+        // 模拟登录功能
+        function login() {
+            // 在实际应用中，你需要验证用户输入的用户名和密码，并根据验证结果执行跳转
+            let username = document.getElementById('login-username').value;
+            let password = document.getElementById('login-password').value;
+
+            // 检查本地存储中是否存在用户
+            let storedUsername = localStorage.getItem('username');
+            let storedPassword = localStorage.getItem('password');
+
+            if (username === storedUsername && password === storedPassword) {
+                // 登录成功，跳转到另一个页面
+                window.location.href = 'index.html'; // 修改成你要跳转的页面路径
+                return false; // 阻止表单默认提交
+            } else {
+                // 登录失败，可以给出错误提示
+                alert('用户名或密码错误。');
+                return false; // 阻止表单默认提交
+            }
+        }
+
+        // 模拟注册功能
+        function register() {
+            // 在实际应用中，你需要将注册的用户信息保存到后端或本地存储中
+            let username = document.getElementById('register-username').value;
+            let password = document.getElementById('register-password').value;
+
+            // 假设这里注册成功，将用户信息保存到本地存储
+            localStorage.setItem('username', username);
+            localStorage.setItem('password', password);
+
+            alert('注册成功，请登录。');
+
+            // 清空注册表单
+            document.getElementById('register-username').value = '';
+            document.getElementById('register-password').value = '';
+
+            // 切换显示登录表单
+            toggleForm();
+
+            return false; // 阻止表单默认提交
+        }
+    </script>
+</body>
+</html>
